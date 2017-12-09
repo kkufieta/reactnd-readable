@@ -19,7 +19,7 @@ class CategoryList extends React.Component {
       <div className="collection">
         {categories.map((category) =>
           <a href="#" className="collection-item" key={category.name}>
-            <span>{category.name}</span>
+            <span>{ category.name }</span>
           </a>
         )}
       </div>

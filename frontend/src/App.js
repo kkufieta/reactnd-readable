@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CategoryList from './CategoryList'
 import PostPreview from './PostPreview'
 import SortPosts from './SortPosts'
+import Post from './Post'
 import './App.css';
 
 class App extends Component {
@@ -63,6 +64,9 @@ class App extends Component {
           <div className="col s6">
             <CategoryList/>
           </div>
+        </div>
+        <div className="row">
+          <Post/>
         </div>
       </div>
     );
