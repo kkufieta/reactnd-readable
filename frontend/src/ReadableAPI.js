@@ -52,14 +52,14 @@ export const getPost = (postId) =>
 // POST /posts/:id
 // vote: String: Either "upVote" or "downVote"
 // TODO: Doesn't work?
-export const voteOnPost = (id, vote) =>
+export const voteOnPost = (id, option) =>
   fetch(`${api}/posts/${id}`, {
     method: 'POST',
     headers: {
         ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({vote})
+    body: JSON.stringify({option})
   }).then(res => res.json())
   .then(data => data)
 
@@ -75,23 +75,19 @@ export const editPost = (id, title, body) =>
   }).then(res => res.json())
 
 // DELETE /posts/:id
-// TODO: Not sure how to do this? Ask mentor
-// TODO: Doesn't work?
 export const deletePost = (id) =>
   fetch(`${api}/posts/${id}`, {
-    method: 'PUT',
+    method: 'DELETE',
     headers: {
-        ...headers,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({})
+        ...headers
+    }
   }).then(res => res.json())
 
 // GET /posts/:id/comments
 export const getComments = (postId) =>
   fetch(`${api}/posts/${postId}/comments`, { headers })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => data)
 
 // POST /comments
 export const setComment = (id, timestamp, body, author, parentId) =>
@@ -135,14 +131,10 @@ export const editComment = (id, timestamp, body) =>
   }).then(res => res.json())
 
 // DELETE /comments/:id
-// TODO: Not sure how to do this? Ask mentor
-// TODO: Doesn't work?
 export const deleteComment = (id) =>
   fetch(`${api}/comments/${id}`, {
-    method: 'PUT',
+    method: 'DELETE',
     headers: {
-        ...headers,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ })
+        ...headers
+    }
   }).then(res => res.json())
