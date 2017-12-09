@@ -51,7 +51,6 @@ export const getPost = (postId) =>
 
 // POST /posts/:id
 // vote: String: Either "upVote" or "downVote"
-// TODO: Doesn't work?
 export const voteOnPost = (id, option) =>
   fetch(`${api}/posts/${id}`, {
     method: 'POST',
