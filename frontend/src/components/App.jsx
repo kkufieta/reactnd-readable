@@ -7,6 +7,7 @@ import SortPosts from './SortPosts.jsx';
 import Post from './Post.jsx';
 import EditView from './EditView.jsx';
 import NewPost from './NewPost.jsx';
+import PostsView from './PostsView.jsx';
 import './App.css';
 
 class App extends Component {
@@ -60,16 +61,7 @@ class App extends Component {
           </div>
         </div>
         <Route exact path="/" render={() => (
-          <div className="row">
-            <div className="col s6">
-              <SortPosts/>
-              <PostPreview/>
-            </div>
-            <div className="col s6">
-              <CategoryList/>
-              <NewPost/>
-            </div>
-          </div>
+          <PostsView/>
         )}/>
         <Route path="/post-id" render={({ history }) => (
           <div className="row">
