@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import * as h from './helper'
-import CategoryList from './CategoryList'
-import PostPreview from './PostPreview'
-import SortPosts from './SortPosts'
-import Post from './Post'
+import CategoryList from './CategoryList.jsx';
+import PostPreview from './PostPreview.jsx';
+import SortPosts from './SortPosts.jsx';
+import Post from './Post.jsx';
 import './App.css';
 
 class App extends Component {

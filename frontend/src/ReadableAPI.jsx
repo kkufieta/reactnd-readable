@@ -1,9 +1,9 @@
-const api = "http://localhost:3001"
+const api = "http://localhost:3001";
 
 // Generate a unique token for storing your bookshelf data on the backend server
-let token = localStorage.token
+let token = localStorage.token;
 if (!token) {
-  token = localStorage.token = Math.random().toString(36).substr(-8)
+  token = localStorage.token = Math.random().toString(36).substr(-8);
 }
 
 const headers = {
@@ -15,19 +15,19 @@ const headers = {
 export const getCategories = () =>
   fetch(`${api}/categories`, { headers })
   .then(res => res.json())
-  .then(data => data.categories)
+  .then(data => data.categories);
 
 // GET /:category/posts
 export const getPostsFromCategory = (category) =>
   fetch(`${api}/${category}/posts`, { headers })
   .then(res => res.json())
-  .then(data => data)
+  .then(data => data);
 
 // GET /posts
 export const getAllPosts = () =>
   fetch(`${api}/posts`, { headers })
   .then(res => res.json())
-  .then(data => data)
+  .then(data => data);
 
 // POST /posts
 export const setPost = (id, timestamp, title, body,
@@ -41,13 +41,13 @@ export const setPost = (id, timestamp, title, body,
     body: JSON.stringify({ id, timestamp, title, body,
                            author, category})
   }).then(res => res.json())
-  .then(data => data)
+  .then(data => data);
 
 // GET /posts/:id
 export const getPost = (postId) =>
   fetch(`${api}/posts/${postId}`, { headers })
   .then(res => res.json())
-  .then(data => data)
+  .then(data => data);
 
 // POST /posts/:id
 // vote: String: Either "upVote" or "downVote"
@@ -60,7 +60,7 @@ export const voteOnPost = (id, option) =>
     },
     body: JSON.stringify({option})
   }).then(res => res.json())
-  .then(data => data)
+  .then(data => data);
 
 // PUT /posts/:id
 export const editPost = (id, title, body) =>
@@ -71,7 +71,7 @@ export const editPost = (id, title, body) =>
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ title, body })
-  }).then(res => res.json())
+  }).then(res => res.json());
 
 // DELETE /posts/:id
 export const deletePost = (id) =>
@@ -80,13 +80,13 @@ export const deletePost = (id) =>
     headers: {
         ...headers
     }
-  }).then(res => res.json())
+  }).then(res => res.json());
 
 // GET /posts/:id/comments
 export const getComments = (postId) =>
   fetch(`${api}/posts/${postId}/comments`, { headers })
   .then(res => res.json())
-  .then(data => data)
+  .then(data => data);
 
 // POST /comments
 export const setComment = (id, timestamp, body, author, parentId) =>
@@ -98,13 +98,13 @@ export const setComment = (id, timestamp, body, author, parentId) =>
     },
     body: JSON.stringify({id, timestamp, body, author, parentId})
   }).then(res => res.json())
-  .then(data => data)
+  .then(data => data);
 
 // GET /comments/:id
 export const getComment = (commentId) =>
   fetch(`${api}/comments/${commentId}`, { headers })
   .then(res => res.json())
-  .then(data => data)
+  .then(data => data);
 
 // POST /comments/:id
 export const voteOnComment = (id) =>
@@ -116,7 +116,7 @@ export const voteOnComment = (id) =>
     },
     body: JSON.stringify({id})
   }).then(res => res.json())
-  .then(data => data)
+  .then(data => data);
 
 // PUT /comments/:id
 export const editComment = (id, timestamp, body) =>
@@ -127,7 +127,7 @@ export const editComment = (id, timestamp, body) =>
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ timestamp, body })
-  }).then(res => res.json())
+  }).then(res => res.json());
 
 // DELETE /comments/:id
 export const deleteComment = (id) =>
@@ -136,4 +136,4 @@ export const deleteComment = (id) =>
     headers: {
         ...headers
     }
-  }).then(res => res.json())
+  }).then(res => res.json());

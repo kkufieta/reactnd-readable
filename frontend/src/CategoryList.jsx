@@ -1,9 +1,9 @@
-import React from 'react'
-import * as ReadableAPI from './ReadableAPI'
+import React from 'react';
+import * as ReadableAPI from './ReadableAPI.jsx';
 
 class CategoryList extends React.Component {
   state = {
-    categories: [],
+    categories: []
   }
 
   // Load all the books once React has mounted
@@ -17,6 +17,7 @@ class CategoryList extends React.Component {
     const { categories } = this.state
     return (
       <div className="collection">
+        <h5 className="collection-item"> Categories </h5>
         {categories.map((category) =>
           <a href="#" className="collection-item" key={category.name}>
             <span>{ category.name }</span>

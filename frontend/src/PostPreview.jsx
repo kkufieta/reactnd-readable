@@ -1,7 +1,7 @@
 import React from 'react'
-import * as ReadableAPI from './ReadableAPI'
+import * as ReadableAPI from './ReadableAPI.jsx'
 
-class Post extends React.Component {
+class PostPreview extends React.Component {
   state = {
     id: '',
     timestamp: -1,
@@ -11,8 +11,7 @@ class Post extends React.Component {
     body: '',
     category: '',
     commentCount: '',
-    deleted: false,
-    comments: []
+    deleted: false
   }
 
   componentDidMount() {
@@ -29,24 +28,15 @@ class Post extends React.Component {
           state.commentCount = data.commentCount
           state.deleted = true
         })
-        this.forceUpdate()
-        return data
-      })
-      .then((data) =>
-            {return ReadableAPI.getComments(data.id)})
-      .then((data) => {
-        this.setState(state => {
-          state.comments = data
-        })
         console.log(this.state)
-        this.forceUpdate()
-      })
+        this.forceUpdate();
+    })
   }
 
   render() {
     const { id, timestamp, voteScore, title,
             author, body, category,
-            commentCount, deleted, comments} = this.state
+            commentCount, deleted } = this.state
     return (
       <div className="row">
         <div className="col s12">
@@ -61,21 +51,8 @@ class Post extends React.Component {
               <a href="#"><i className="material-icons">thumb_up</i></a>
               <a href="#"><i className="material-icons">thumb_down</i></a>
               <p>{ timestamp }</p>
+              <p>Comments: { commentCount }</p>
             </div>
-            {comments.map((comment) =>
-                <div className="card blue-grey darken-1">
-                <div className="card-content white-text">
-                <p>{ comment.body }</p>
-                </div>
-                <div className="card-action">
-                <p>{ comment.author }</p>
-                <p>{ comment.voteScore }</p>
-                <a href="#"><i className="material-icons">thumb_up</i></a>
-                <a href="#"><i className="material-icons">thumb_down</i></a>
-                <p>{ comment.timestamp }</p>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
@@ -83,4 +60,4 @@ class Post extends React.Component {
   }
 }
 
-export default Post
+export default PostPreview

@@ -1,5 +1,5 @@
 import React from 'react'
-import * as ReadableAPI from './ReadableAPI'
+import * as ReadableAPI from './ReadableAPI.jsx'
 
 class SortPosts extends React.Component {
   state = {
