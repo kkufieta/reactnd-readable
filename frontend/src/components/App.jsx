@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 // import * as h from './helper'
 import CategoryList from './CategoryList.jsx';
+import { Route } from 'react-router-dom'
 import PostPreview from './PostPreview.jsx';
 import SortPosts from './SortPosts.jsx';
 import Post from './Post.jsx';
 import EditView from './EditView.jsx';
+import NewPost from './NewPost.jsx';
 import './App.css';
 
 class App extends Component {
@@ -54,24 +56,31 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col s12">
-            <h3>Unicorn Forest</h3>
+            <h3>Unicorn Forest / Category</h3>
           </div>
         </div>
-        <div className="row">
-          <div className="col s6">
-            <SortPosts/>
-            <PostPreview/>
+        <Route exact path="/" render={() => (
+          <div className="row">
+            <div className="col s6">
+              <SortPosts/>
+              <PostPreview/>
+            </div>
+            <div className="col s6">
+              <CategoryList/>
+              <NewPost/>
+            </div>
           </div>
-          <div className="col s6">
-            <CategoryList/>
+        )}/>
+        <Route path="/post-id" render={({ history }) => (
+          <div className="row">
+            <Post/>
           </div>
-        </div>
-        <div className="row">
-          <Post/>
-        </div>
-        <div className="row">
-          <EditView/>
-        </div>
+        )}/>
+        <Route path="/edit-id" render={({ history }) => (
+          <div className="row">
+            <EditView/>
+          </div>
+        )}/>
       </div>
     );
   }

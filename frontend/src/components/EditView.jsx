@@ -44,7 +44,7 @@ class EditView extends React.Component {
           <div className="row">
             <div className="input-field col s8">
               <input value={ title } id="input_text" type="text" data-length="10"/>
-              <label for="input_text">Title</label>
+              <label htmlFor="input_text">Title</label>
             </div>
             <div className="col s2">
             </div>
@@ -62,7 +62,7 @@ class EditView extends React.Component {
           <div className="row">
             <div className="input-field col s12">
               <textarea value={ body } id="textarea1" className="materialize-textarea" data-length="120"></textarea>
-              <label for="textarea1">Body</label>
+              <label htmlFor="textarea1">Body</label>
             </div>
           </div>
         </form>

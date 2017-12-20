@@ -78,9 +78,21 @@ class Post extends React.Component {
             </div>
             {comments.map((comment) =>
               <div key={comment.id}>
-                <div className="card blue-grey darken-1">
-                  <div className="card-content white-text">
-                    <p>{ comment.body }</p>
+                <div className="card blue lighten-5">
+                  <div className="card-content row">
+                    <div className="col s10">
+                      <p>{ comment.body }</p>
+                    </div>
+                    <div className="col s2">
+                      <a className='edit-delete-button dropdown-button btn' data-activates={'dropdown' + comment.id}>
+                        <i className="material-icons">more_vert</i>
+                      </a>
+                      <ul id={'dropdown' + comment.id} className='dropdown-content'>
+                        <li><a href="#!"><i className="material-icons">create</i></a></li>
+                        <li><a href="#!"><i className="material-icons">delete</i></a></li>
+                      </ul>
+                    </div>
+
                   </div>
                   <div className="card-action">
                     <p>{ comment.author }</p>
