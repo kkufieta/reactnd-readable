@@ -4,6 +4,7 @@ import CategoryList from './CategoryList.jsx';
 import PostPreview from './PostPreview.jsx';
 import SortPosts from './SortPosts.jsx';
 import Post from './Post.jsx';
+import EditView from './EditView.jsx';
 import './App.css';
 
 class App extends Component {
@@ -67,6 +68,9 @@ class App extends Component {
         </div>
         <div className="row">
           <Post/>
+        </div>
+        <div className="row">
+          <EditView/>
         </div>
       </div>
     );
