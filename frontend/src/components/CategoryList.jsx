@@ -1,24 +1,16 @@
 import React from 'react';
 import * as ReadableAPI from './ReadableAPI.jsx';
+import { connect } from 'react-redux'
 
 class CategoryList extends React.Component {
-  state = {
-    categories: []
-  }
-
-  // Load all the books once React has mounted
-  componentDidMount() {
-    ReadableAPI.getCategories().then((categories) => {
-      this.setState({categories})
-    })
-  }
-
   render() {
-    const { categories } = this.state
+    const { categories } = this.props
+    console.log(categories)
+
     return (
       <div className="collection">
         <h5 className="collection-item"> Categories </h5>
-        {categories.map((category) =>
+        {categories['categories'].map((category) =>
           <a href="#" className="collection-item" key={category.name}>
             <span>{ category.name }</span>
           </a>
@@ -28,4 +20,19 @@ class CategoryList extends React.Component {
   }
 }
 
-export default CategoryList
+function mapStateToProps ({ categories }) {
+  return {
+    categories
+  }
+}
+
+// function mapDispatchToProps (dispatch) {
+  // return {
+    // getCategories: () => dispatch(loadCategories())
+  // }
+// }
+
+export default connect(
+  mapStateToProps
+ //  mapDispatchToProps
+)(CategoryList)

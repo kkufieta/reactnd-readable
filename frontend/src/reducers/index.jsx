@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import {
   ADD_RECIPE,
   REMOVE_FROM_CALENDAR,
+  LOAD_CATEGORIES_SUCCESS
 } from '../actions'
 
 function food (state = {}, action) {
@@ -82,7 +83,21 @@ function calendar (state = initialCalendarState, action) {
   }
 }
 
+function categories (state = {'categories': []}, action) {
+  const { categories } = action
+  console.log(action)
+  switch (action.type) {
+    case LOAD_CATEGORIES_SUCCESS :
+      return {
+        categories
+      }
+    default :
+      return state
+  }
+}
+
 export default combineReducers({
   food,
   calendar,
+  categories
 })

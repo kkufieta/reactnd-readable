@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 // import * as h from './helper'
+import { connect } from 'react-redux'
+import { addRecipe, removeFromCalendar, loadCategories } from '../actions'
 import CategoryList from './CategoryList.jsx';
 import { Route } from 'react-router-dom'
 import PostPreview from './PostPreview.jsx';
@@ -53,6 +55,8 @@ class App extends Component {
   }
 
   render() {
+    const { categories, getCategories } = this.props
+
     return (
       <div className="container">
         <div className="row">
@@ -78,4 +82,19 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps ({ categories }) {
+  return {
+    categories
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    getCategories: () => dispatch(loadCategories())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
