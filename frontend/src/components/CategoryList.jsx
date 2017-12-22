@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 class CategoryList extends React.Component {
   render() {
     const { categories } = this.props
-    console.log(categories)
 
     return (
       <div className="collection">

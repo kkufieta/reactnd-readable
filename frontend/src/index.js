@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker.jsx';
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from './reducers'
 import { Provider } from 'react-redux'
-import { loadCategories } from './actions'
+import { loadCategories, loadAllPosts } from './actions'
 import thunk from 'redux-thunk'
 
 const store = createStore(
@@ -16,6 +16,7 @@ const store = createStore(
 )
 
 store.dispatch(loadCategories());
+store.dispatch(loadAllPosts());
 
 ReactDOM.render(
   <Provider store={ store }>
