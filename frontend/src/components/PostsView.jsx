@@ -18,7 +18,7 @@ class PostsView extends Component {
           <SortPosts/>
           {posts['posts']
             .map((post) =>
-              <PostPreview post={post}/>
+              <PostPreview key={post.id} post={post}/>
             )}
         </div>
         <div className="col s6">

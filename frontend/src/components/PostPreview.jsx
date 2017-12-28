@@ -19,7 +19,7 @@ const PostPreview = ({ post }) => {
             <p>{ voteScore }</p>
             <a href="#"><i className="material-icons">thumb_up</i></a>
             <a href="#"><i className="material-icons">thumb_down</i></a>
-            <p>{ timestamp }</p>
+            <p>{ new Date(timestamp).toLocaleString() }</p>
             <p>Comments: { commentCount }</p>
           </div>
         </div>
